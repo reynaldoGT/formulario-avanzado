@@ -1,0 +1,190 @@
+//variables
+$primary: #333f9f
+$light-primary: #bbdefb
+$white: #f2f2f2
+$divider: #b6b6b6
+$error: #d32f2f
+$borde: 2px
+$font-family: "Roboto", Arial
+
+*
+	margin: 0
+	padding: 0
+	//es para que el contenedor tenga una medida y que no se altere  */
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+
+body
+	background: $white
+	font-family: $font-family
+	border-top: 30px solid $primary
+	//esto hace lal linea superior que se muestra arriba
+
+.wrap
+	width: 90%
+	//que tengo un ancho de 90 %,pero que sea un ancho mayor de 500px
+	max-width: 500px
+	padding: 40px
+	margin: auto
+	//con esto ponemos al centro nuestor formulario
+	background: #fff
+	box-shadow: 0px 0px 3px grey
+	//esto es el borde y tiene un poco de sombra
+
+.contenedor-formulario
+	width: 100%
+	color: #000
+	padding: 50px
+	.formulario
+		width: 100%
+		margin: auto
+		.input-group
+			position: relative
+			//con esto vamo a hacer que el label este dentro del input text
+			margin-bottom: 32px
+			//con el margin-bottom seraramos los elementos entre si
+			input[type="text"],
+			input[type=email],
+			input[type="password"],
+				font-family:  $font-family
+				font-size: 16px
+				color: $primary
+				//para que los inputs ocupen el 100% pero respete el padding
+				//tiene un box-sizing por eso no hay problemas
+				width: 100%
+				outline: none
+				padding: 15px
+				background: none
+				//con estas lineas borramos los bordes por defectos que trae
+				border: none
+				border-bottom: $borde solid $light-primary
+				//este es el borde inferior que se en el formulario
+
+				&:focus,
+				&:active
+					//cuando estos 3 esten en su estado active o focus van a tenner un
+					//borde abajo de 2px de color primary:
+
+					outline: none
+					border-bottom: $borde solid $primary
+				&.error
+					border-bottom: $borde solid $error
+					+ label
+						color: $error
+			label
+				color: $primary
+				&.label
+					//con esto hacemos que el label este dentro del input text
+					position: absolute
+					top: 16px
+					left: 0
+					font-size: 16px
+					line-height: 16px
+					//con eso sube un poco la posicion
+					margin-left: 16px
+					//con esto mueve el label de izquierda a derecha 16 px
+					-webkit-transition: all .3s ease
+					-o-transition: all .3s ease
+					transition: all .3s ease
+					//con esto hacemos la transicion que hace que suba arriba el label
+					&.active
+						top: -12px
+						font-family: 12px
+						line-height: 12px
+						color: $divider
+						//con estas lienas hacemos para que suba el label
+			&.checkbox label,
+			&.radio label,
+				display: inline-block
+				cursor: pointer
+				//hacemos el cursos con fora de mano
+				color: $primary
+				position: relative
+				padding: 5px 15px 5px 51px
+				//este es todo el espacio que va ocupar para hacerle click
+				font-size: 1em
+				border-right: 3px
+				//esto hace el efecto de animacion
+				-webkit-transition: all .3s ease
+				-o-transition: all .3s ease
+				transition: all .3s ease
+				&:hover
+					background: rgba($light-primary,1)
+					//esto hace que el hover tenga una opacidad
+					//accedemos a los estilos que estan antes de label*/
+				&:before
+					content: ""
+					//primero tenemos que poner blanco porque si no, no funciona
+					display: inline-block
+					//ponemos en lineas
+					width: 17px
+					//hacemos el ancho del circukito
+					height: 17px
+					//hacemos el alto del circukito
+					position: absolute
+					left: 15px
+					//una vez puesto la posicion absoluta le ponemos la posicion que qureremos
+					border-radius: 50%
+					//con esto convertimos que lo hicimos en un circulito
+					background: none
+					//hacemos que nuestro cirulo este vacio
+					border: $borde solid $primary
+			&.error
+				label
+					color: $error
+					&:hover
+						background: rgba($error, .2)
+					&:before
+						border: $borde solid $error
+			//con lo siguiente quitamos la forma que tiene los radio button, para que se vea mejor el otro que creamos:
+			&.radio
+				input[type="radio"]
+					//quitamos los circulitos que vienen por defecto
+					display: none
+					//ahora trabajamos en su estado check
+					&:checked + label:before
+						//hacemos que cuando le demos click se quite su cirulo
+						display: none
+					&:checked + label
+						//con las sigueintes lineas hacemos el efecto que hace que se vaya a un lado
+						padding: 5px 15px
+						background: $primary
+						border-radius: $borde
+						color: $white
+			&.checkbox
+				label:before
+						border-radius: 3px
+				input[type="checkbox"]
+
+					//quitamos los circulitos que vienen por defecto
+					display: none
+					//ahora trabajamos en su estado check
+					&:checked + label:before
+						//hacemos que cuando le demos click se quite su cirulo
+						display: none
+					&:checked + label
+						//con las sigueintes lineas hacemos el efecto que hace que se vaya a un lado
+						padding: 5px 15px
+						background: $primary
+						color: $white
+		input[type="submit"]
+			background: $primary
+			border-radius: 1px
+			border: $borde solid $white
+			color: #fff
+			cursor: pointer
+			//antes de ponerle padding a nuestro boton tenemos que hacerlo que este en un elemento de tipo linea
+			display: inline-block
+			padding: 15px
+			width: 100%
+			font-family: $font-family
+			font-size: 16px
+			text-transform: capitalize
+			//hacemos la transicion (se ve cuando la pagina recarga)
+			-webkit-transition: all .3s ease
+			-o-transition: all .3s ease
+			transition: all .3s ease
+			&:hover
+				//hacemos el efecto donde esta nuestro error
+				background: #1972d2
